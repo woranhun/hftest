@@ -1,0 +1,22 @@
+cat <<EOF> run.sh
+#!/bin/bash
+arrCode=()
+rm program666.cpp 2>/dev/null||echo "Nincs mit torolni!"
+echo "Kerem a kodot! Ha vegeztem ctrl+D -t nyomj es varj!"
+while read code
+
+do
+echo \$code >> program666.cpp
+done
+
+echo "-----------\n"
+cat program666.cpp
+rm PROG666 2>/dev/null||echo "Nincs mit torolni!"
+echo "Forditas folyamatban!"
+g++ -o PROG666 program666.cpp
+chmod +x PROG666
+hftest PROG666
+EOF
+chmod +x run.sh
+
+./run.sh
